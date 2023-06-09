@@ -1,20 +1,15 @@
-FROM python:3.10
-
-EXPOSE 8000
-
-ENV PYTHONDONTWRITEBYTECODE=1
+FROM python:3.9-slim
 
 ENV PYTHONUNBUFFERED=1
 
-RUN apt install libpq-dev
+RUN apt-get update && apt-get install -y \
+    --no-install-recommends gcc \
+    python3.9-dev \
+    libpq-dev
 
-COPY requirements.txt .
-RUN python -m pip install -r requirements.txt
+WORKDIR /opt/app
+COPY . .
 
-WORKDIR /app
-COPY . /app
+RUN pip install -r requirements.txt
 
-RUN adduser -u 5678 --disabled-password --gecos "" appuser && chown -R appuser /app
-USER appuser
-
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "sampleproject.wsgi"]
+EXPOSE 8000
