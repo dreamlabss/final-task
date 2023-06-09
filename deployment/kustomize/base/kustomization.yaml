@@ -10,5 +10,5 @@ resources:
   - secret.yaml
 
 images:
-    - name: dreamlabss/sampleapp
+    - name: dreamlabssdock/sampleapp
       newTag: main
