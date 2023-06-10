@@ -11,4 +11,4 @@ resources:
 
 images:
     - name: dreamlabssdock/sampleapp
-      newTag: main
+      newTag: v1.2.0
