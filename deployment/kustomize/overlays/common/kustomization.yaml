@@ -6,7 +6,7 @@ images:
   - name: nginx
     newName: nginx
     newTag: 1.23.2-alpine
-  - name: denisov/sampleapp
+  - name: dreamlabssdock/sampleapp
     newTag:  v1.0.1
 
 
